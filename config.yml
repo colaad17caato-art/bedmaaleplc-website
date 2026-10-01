@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: en
+site_url: https://bedmaaleplc.com
+display_url: https://bedmaaleplc.com
+logo_url: /assets/bedmaale-logo.png
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+publish_mode: simple
+
+collections:
+  - name: updates
+    label: Website updates
+    files:
+      - name: updates
+        label: News and announcements
+        file: content/updates.json
+        format: json
+        fields:
+          - label: Posts
+            name: updates
+            widget: list
+            summary: '{{fields.title}} · {{fields.date}}'
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Date
+                name: date
+                widget: datetime
+                date_format: YYYY-MM-DD
+                time_format: false
+                format: YYYY-MM-DD
+              - label: Short introduction
+                name: summary
+                widget: text
+              - label: Photo
+                name: image
+                widget: image
+                required: false
+              - label: Photo description
+                name: image_alt
+                widget: string
+                required: false
+              - label: Full text
+                name: body
+                widget: text
+                required: false
+              - label: Show on the website
+                name: published
+                widget: boolean
+                default: true
